@@ -42,17 +42,17 @@ class ModelTests(TestCase):
 
             self.assertEqual(str(airline), airline.name)
 
-        def test_create_runway(self):
-            """Test Creating a Runway is Successful."""
-            runway = models.Runway.objects.create(
-                airport = create_airport(),
-                runway_number = 18,
-                runway_designation = "N",
-                length=5000,
-                width=5000
-            )
+    def test_create_runway(self):
+        """Test Creating a Runway is Successful."""
+        runway = models.Runway.objects.create(
+            airport = create_airport(),
+            runway_number = 18,
+            runway_designation = "N",
+            length=5000,
+            width=5000
+        )
 
-            self.assertEqual(str(runway), str(runway.runway_number)+runway.runway_designation)
+        self.assertEqual(str(runway), str(runway.runway_number)+runway.runway_designation)
 
 
         def test_create_flight(self):
