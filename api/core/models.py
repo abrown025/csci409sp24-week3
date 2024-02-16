@@ -33,7 +33,7 @@ class Runways(models.Model):
     airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='runways')
 
     def __str__(self):
-        return self.runway_number, self.runway_designation
+        return str(self.runway_number), str(self.runway_designation)
 
 class Flights(models.Model):
     origin = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='flight_origin')
