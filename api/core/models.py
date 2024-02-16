@@ -21,24 +21,24 @@ class Airline(models.Model):
     
 class Runways(models.Model):
     DESIGNATIONS = {
-        "L: Left",
-        "C: Center",
-        "R: Right",
-        "N: None",
+        "L": "Left",
+        "C": "Center",
+        "R": "Right",
+        "N": "None",
     }
     runway_number = models.IntegerField()
-    runway_designation = models.CharField(maxlength=1, choices=DESIGNATIONS)
+    runway_designation = models.CharField(max_length=1, choices=DESIGNATIONS)
     length = models.IntegerField()
     width = models.IntegerField()
-    airport = models.ForeignKey(on_delete=models.CASCADE)
+    airport = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='runways')
 
     def __str__(self):
         return self.runway_number, self.runway_designation
 
 class Flights(Airport, Airline):
-    origin = Airport(on_delete=models.PROTECT, related_name='flight_origin')
-    destination = Airport(on_delete=models.PROTECT, related_name='flight_destination')
-    airline = Airline(on_delete=models.PROTECT)
+    origin = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='flight_origin')
+    destination = models.ForeignKey(Airport, on_delete=models.PROTECT, related_name='flight_destination')
+    airline = models.ForeignKey(Airline, on_delete=models.PROTECT, related_name='airline')
     flight_number = models.IntegerField()
     departure = models.DateTimeField()
     arrival = models.DateTimeField()

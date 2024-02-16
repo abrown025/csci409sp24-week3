@@ -33,43 +33,43 @@ class ModelTests(TestCase):
 
         self.assertEqual(str(airport), airport.name)
         
-def test_create_airline(self):
-        """Test Creating an Airline is Successful."""
-        airline = models.Airline.objects.create(
-            name="Delta Airlines",
-            airline_code="DL"
-        )
+    def test_create_airline(self):
+            """Test Creating an Airline is Successful."""
+            airline = models.Airline.objects.create(
+                name="Delta Airlines",
+                airline_code="DL"
+            )
 
-        self.assertEqual(str(airline), airline.name)
+            self.assertEqual(str(airline), airline.name)
 
-    def test_create_runway(self):
-        """Test Creating a Runway is Successful."""
-        runway = models.Runway.objects.create(
-            airport = create_airport(),
-            runway_number = 18,
-            runway_designation = "N",
-            length=5000,
-            width=5000
-        )
+        def test_create_runway(self):
+            """Test Creating a Runway is Successful."""
+            runway = models.Runway.objects.create(
+                airport = create_airport(),
+                runway_number = 18,
+                runway_designation = "N",
+                length=5000,
+                width=5000
+            )
 
-        self.assertEqual(str(runway), str(runway.runway_number)+runway.runway_designation)
+            self.assertEqual(str(runway), str(runway.runway_number)+runway.runway_designation)
 
 
-    def test_create_flight(self):
-        """Test Creating a Flight is Successful."""
-        airline = models.Airline.objects.create(
-            name='Delta Airlines',
-            airline_code='DL'
-        )
+        def test_create_flight(self):
+            """Test Creating a Flight is Successful."""
+            airline = models.Airline.objects.create(
+                name='Delta Airlines',
+                airline_code='DL'
+            )
 
-        flight = models.Flight.objects.create(
-            origin = create_airport(),
-            destination = create_airport(),
-            airline = airline,
-            flight_number = 1954,
-            departure = datetime.now(),
-            arrival = datetime.now(),
-            aircraft_type = 'B747',
-        )
+            flight = models.Flight.objects.create(
+                origin = create_airport(),
+                destination = create_airport(),
+                airline = airline,
+                flight_number = 1954,
+                departure = datetime.now(),
+                arrival = datetime.now(),
+                aircraft_type = 'B747',
+            )
 
-        self.assertEqual(str(flight), flight.airline.airline_code + str(flight.flight_number))
+            self.assertEqual(str(flight), flight.airline.airline_code + str(flight.flight_number))
