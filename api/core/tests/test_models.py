@@ -44,7 +44,7 @@ class ModelTests(TestCase):
 
     def test_create_runway(self):
         """Test Creating a Runway is Successful."""
-        runway = models.Runway.objects.create(
+        runway = models.Runways.objects.create(
             airport = create_airport(),
             runway_number = 18,
             runway_designation = "N",

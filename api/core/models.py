@@ -45,4 +45,4 @@ class Flights(models.Model):
     aircraft_type = models.CharField(max_length=10)
 
     def __str__(self):
-        return self.airline_code, self.flight_number
+        return self.airline, self.flight_number
