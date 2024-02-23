@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.testf import TestCase
 from core.models import Airport, Runway
 from core.serializers import RunwaySerializer
 
